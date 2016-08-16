@@ -3,11 +3,13 @@
 		<title>Nova Batida de Ponto</title>
 	</head>
 	<body>
-	    <div id="authorize-div" style="display: none">
- 		<span>Authorize access to Google Apps Script Execution API</span>
- 		<!--Button for the user to click to initiate auth sequence -->
- 		<button id="authorize-button" onclick="handleAuthClick(event)">Authorize</button>
-            </div>
+	
+	<div id="authorize-div" style="display: none">
+		<span>Authorize access to Google Apps Script Execution API</span>
+		<!--Button for the user to click to initiate auth sequence -->
+		<button id="authorize-button" onclick="handleAuthClick(event)">Authorize</button>
+    </div>
+	
 	</body>
 	<script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', documentReady);
@@ -17,17 +19,16 @@
 		alert(aNewDate);
 	}
 	
-		// Your Client ID can be retrieved from your project in the Google
-     // Developer Console, https://console.developers.google.com
+	// Your Client ID can be retrieved from your project in the Google
+    // Developer Console, https://console.developers.google.com
     var CLIENT_ID = '850821780363-08pi825a2ha7k7bo9fhisv71mc4qaqdb.apps.googleusercontent.com';
-  
+
     var SCOPES = ['https://www.googleapis.com/auth/script.scriptapp','https://www.googleapis.com/auth/spreadsheets'];
 
     /**
     * Check if current user has authorized this application.
     */
     function checkAuth() {
-    	console.log("loaded");
 		gapi.auth.authorize(
 		{
 			'client_id': CLIENT_ID,
@@ -135,7 +136,7 @@
 		var textContent = document.createTextNode(message + '\n');
 		pre.appendChild(textContent);
 	}
-
+	
 	</script>
 	<script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
 </html>
