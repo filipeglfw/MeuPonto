@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Nova Batida de Ponto</title>
-		<script src="https://apis.google.com/js/client.js?onload=checkAuth" async>
+		<script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
 	</head>
 	<body>
 	    <div id="authorize-div" style="display: none">
@@ -29,7 +29,7 @@
     * Check if current user has authorized this application.
     */
     function checkAuth() {
-    	alert("loaded");
+    	console.log("loaded");
 		gapi.auth.authorize(
 		{
 			'client_id': CLIENT_ID,
