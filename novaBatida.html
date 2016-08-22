@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 	<head>
 		<title>Nova Batida de Ponto</title>
+		<link rel="stylesheet" href="css/novaBatida.css">
 	</head>
 	<body>
 		
@@ -100,7 +101,7 @@
 				}
 			} else {
 				// Return SUCCESSFUL
-				document.querySelector('#horario-batida').textContent = horario;
+				document.querySelector('#horario-batida').textContent = new Date(horario);
 			}
 		});
 	}
