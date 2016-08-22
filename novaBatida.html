@@ -3,14 +3,9 @@
 		<title>Nova Batida de Ponto</title>
 	</head>
 	<body>
-	
-	<div id="authorize-div" style="display: none">
-		<span>Authorize access to Google Apps Script Execution API</span>
-		<!--Button for the user to click to initiate auth sequence -->
-		<button id="authorize-button" onclick="handleAuthClick(event)">Authorize</button>
-    </div>
-	<pre id='output'></pre>
-	
+		
+		<span id='horario-batida'></span>
+		<pre id='output'></pre>
 	</body>
 	<script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', documentReady);
@@ -46,33 +41,14 @@
 	* @param {Object} authResult Authorization result.
 	*/
 	function handleAuthResult(authResult) {
-		var authorizeDiv = document.getElementById('authorize-div');
 		if (authResult && !authResult.error) {
 			// Hide auth UI, then load client library.
-			authorizeDiv.style.display = 'none';
 			baterPonto();
 		} else {
 			// Show auth UI, allowing the user to initiate authorization by
 			// clicking authorize button.
-			authorizeDiv.style.display = 'inline';
+			window.location = 'autorizacao.html'
 		}
-	}
-
-	/**
-	* Initiate auth flow in response to user clicking authorize button.
-	*
-	* @param {Event} event Button click event.
-	*/
-	function handleAuthClick(event) {
-		gapi.auth.authorize(
-			{
-				client_id: CLIENT_ID,
-				scope: SCOPES,
-				immediate: false
-			},
-			handleAuthResult
-		);
-		return false;
 	}
 
 	/**
@@ -82,6 +58,7 @@
 		var scriptId = "1jmGAbkmjxVGht8aePqEzNzTGfAeY1YGRBYvb919xRqyEgZRBC3eimely";
 		var horario = new Date()
 		.getTime();
+		console.log(horario)
 		
 		// Create an execution request object.
 		var request = {
@@ -123,7 +100,7 @@
 				}
 			} else {
 				// Return SUCCESSFUL
-				window.close();
+				document.querySelector('#horario-batida').textContent = horario;
 			}
 		});
 	}
