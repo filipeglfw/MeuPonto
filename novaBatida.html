@@ -12,8 +12,7 @@
 	document.addEventListener('DOMContentLoaded', documentReady);
 	
 	function documentReady() {
-		let aNewDate = new Date();
-		alert(aNewDate);
+
 	}
 	
 	// Your Client ID can be retrieved from your project in the Google
@@ -101,7 +100,12 @@
 				}
 			} else {
 				// Return SUCCESSFUL
-				document.querySelector('#horario-batida').textContent = new Date(horario);
+				var options = {
+					hour:'numeric',
+					minute:'numeric',
+				}
+				
+				document.querySelector('#horario-batida').textContent = new Date(horario).toLocaleString('pt-BR', options);
 			}
 		});
 	}
